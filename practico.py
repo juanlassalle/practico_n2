@@ -3,6 +3,8 @@
 #3)Realicen al menos dos transformaciones adicionales: una conversión de tipo de dato 
 #(por ejemplo, fechas) y la creación de al menos una variable derivada (por ejemplo, la antigüedad 
 # del socio en meses a partir de la fecha de alta).
+#5)Validen el dataset final repitiendo la inspección inicial (cantidad de valores faltantes, duplicados y variantes de formato), 
+#y confirmen que los problemas detectados en el TP N° 1 fueron efectivamente resueltos.
 import pandas as pd
 
 # 1. Cargar los datos
