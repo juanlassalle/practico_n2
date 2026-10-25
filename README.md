@@ -7,8 +7,6 @@ El presente documento describe los pasos necesarios para configurar un entorno d
 trabajo con Python en Visual Studio Code, crear un entorno virtual e importar un
 archivo de Excel para su análisis mediante la biblioteca Pandas.
 
-El contenido se encuentra redactado en tercera persona y puede utilizarse como
-guía de referencia para la puesta en marcha del proyecto.
 
 ---
 
