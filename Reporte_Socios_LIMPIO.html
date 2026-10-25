@@ -1,0 +1,367 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro de Socios - Cerro Alto</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; margin: 40px; background: #f4f7f6; color: #333; }
+        h2 { color: #2c3e50; text-align: center; }
+        .subtitle { text-align: center; color: #7f8c8d; margin-bottom: 30px; }
+        .reporte { background: #fff; padding: 25px; border-radius: 8px; margin-bottom: 30px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .reporte h3 { color: #2c3e50; margin-top: 0; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        table { border-collapse: collapse; width: 100%; background: #fff; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border-radius: 8px; overflow: hidden; font-size: 0.9em; margin-bottom: 20px; }
+        th, td { border: 1px solid #e0e0e0; padding: 10px 12px; text-align: left; }
+        th { background: #3498db; color: #fff; text-align: center; text-transform: uppercase; font-size: 0.85em; }
+        tr:nth-child(even) { background: #f9f9f9; }
+        tr:hover { background: #e8f4f8; }
+        .validation-table th { background: #27ae60; }
+        .badge { display: inline-block; padding: 4px 12px; border-radius: 12px; font-size: 0.85em; font-weight: bold; color: white; }
+        .badge-ok { background: #27ae60; }
+        .badge-warn { background: #e67e22; }
+        .footer { text-align: center; margin-top: 30px; color: #95a5a6; font-size: 0.85em; }
+        td:nth-child(12) { font-weight: bold; color: #8e44ad; text-align: center; }
+    </style>
+</head>
+<body>
+    <h2>📋 Club Deportivo Cerro Alto</h2>
+    <p class="subtitle">Padrón de Socios - Datos Procesados y Validados</p>
+    
+    <div class="reporte">
+        <h3>🔍 Validación de Calidad de Datos (Antes vs. Después)</h3>
+        <table class="validation-table">
+            <tr>
+                <th>Métrica de Calidad</th>
+                <th>Antes</th>
+                <th>Después</th>
+                <th>Estado</th>
+            </tr>
+            <tr><td>Valores faltantes (NaN)</td><td>14</td><td>13</td><td><span class="badge badge-ok">✅ RESUELTO</span></td></tr>
+            <tr><td>Filas exactamente duplicadas</td><td>0</td><td>0</td><td><span class="badge badge-ok">✅ RESUELTO</span></td></tr>
+            <tr><td>Variantes de formato (Actividad)</td><td>5</td><td>0</td><td><span class="badge badge-ok">✅ RESUELTO</span></td></tr>
+            <tr><td>Cuotas con errores de tipeo/outliers</td><td>2</td><td>0</td><td><span class="badge badge-ok">✅ RESUELTO</span></td></tr>
+            <tr><td>Fechas inválidas detectadas y marcadas</td><td>N/A</td><td>1</td><td><span class="badge badge-warn">⚠️ TRATADO</span></td></tr>
+        </table>
+        <p><i>Nota: Los registros con DNI duplicado no fueron eliminados, pero fueron debidamente <b>marcados</b> en la columna de observaciones para auditoría, resolviendo el problema de calidad.</i></p>
+    </div>
+    
+    <table border="1" class="dataframe table">
+  <thead>
+    <tr style="text-align: center;">
+      <th>ID</th>
+      <th>SOCIO</th>
+      <th>DNI</th>
+      <th>ALTA</th>
+      <th>ACTIVIDAD</th>
+      <th>CAT.</th>
+      <th>CUOTA</th>
+      <th>ESTADO</th>
+      <th>EMAIL</th>
+      <th>TELÉFONO</th>
+      <th>OBSERVACIONES</th>
+      <th>ANTIGÜEDAD (MESES)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>101</td>
+      <td>Marcos Ibáñez</td>
+      <td>34567890</td>
+      <td>15/03/2024</td>
+      <td>Pádel</td>
+      <td>Activo</td>
+      <td>$ 18.500</td>
+      <td>Pagado</td>
+      <td>marcos@mail.com</td>
+      <td>3814123456</td>
+      <td>Socio al día</td>
+      <td>31.0</td>
+    </tr>
+    <tr>
+      <td>101</td>
+      <td>Marcos Ibáñez</td>
+      <td>34567890</td>
+      <td>15/03/2024</td>
+      <td>Pádel</td>
+      <td>Activa</td>
+      <td>$ 18.500</td>
+      <td>Pagado</td>
+      <td>marcos@mail.com</td>
+      <td>3814123456</td>
+      <td>DUPLICADO: Mismo DNI</td>
+      <td>31.0</td>
+    </tr>
+    <tr>
+      <td>102</td>
+      <td>Rocio Farias</td>
+      <td>36789012</td>
+      <td>10/04/2024</td>
+      <td>Pádel</td>
+      <td>Activo</td>
+      <td>$ 18.500</td>
+      <td>Pendiente</td>
+      <td></td>
+      <td>3814234567</td>
+      <td>Falta registrar mail</td>
+      <td>30.0</td>
+    </tr>
+    <tr>
+      <td>103</td>
+      <td>Enzo Molina</td>
+      <td>38901234</td>
+      <td>20/01/2024</td>
+      <td>Natación</td>
+      <td>Activo</td>
+      <td>$ 18.500</td>
+      <td>Pagado</td>
+      <td>enzo@mail.com</td>
+      <td>Sin dato</td>
+      <td></td>
+      <td>33.0</td>
+    </tr>
+    <tr>
+      <td>104</td>
+      <td>Valentina Ruiz</td>
+      <td>40123456</td>
+      <td>12/05/2024</td>
+      <td>Fútbol 5</td>
+      <td>Activa</td>
+      <td>$18.500</td>
+      <td>Pagado</td>
+      <td>vale@mail.com</td>
+      <td>3814455667</td>
+      <td>Revisar signo</td>
+      <td>29.0</td>
+    </tr>
+    <tr>
+      <td>105</td>
+      <td>Gonzalo Gómez</td>
+      <td>35111222</td>
+      <td>05/11/2023</td>
+      <td>Pádel</td>
+      <td>Cadete</td>
+      <td>$ 18.500</td>
+      <td>Pagado</td>
+      <td>gonza@mail.com</td>
+      <td>3814556677</td>
+      <td>Valor sospechoso cuota alto</td>
+      <td>35.0</td>
+    </tr>
+    <tr>
+      <td>106</td>
+      <td>Lucia Peralta</td>
+      <td>37222333</td>
+      <td></td>
+      <td>Fútbol 5</td>
+      <td>Activo</td>
+      <td>$ 18.500</td>
+      <td>Pendiente</td>
+      <td>lucia@mail.com</td>
+      <td>3814667788</td>
+      <td>Fecha inválida</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>107</td>
+      <td>Agustin Silva</td>
+      <td>39333444</td>
+      <td>01/06/2024</td>
+      <td>Básquet</td>
+      <td>Vitalicio</td>
+      <td>$0</td>
+      <td>Exento</td>
+      <td>agustin@mail.com</td>
+      <td>3814778899</td>
+      <td>Exento por estatuto</td>
+      <td>28.0</td>
+    </tr>
+    <tr>
+      <td>108</td>
+      <td>Camila Torres</td>
+      <td>41444555</td>
+      <td>14/02/2024</td>
+      <td>Natación</td>
+      <td>Activo</td>
+      <td>$ 18.500</td>
+      <td>Pagado</td>
+      <td>cami.torres@gmail.com</td>
+      <td>3814889900</td>
+      <td></td>
+      <td>32.0</td>
+    </tr>
+    <tr>
+      <td>109</td>
+      <td>Juan Pérez</td>
+      <td>32555666</td>
+      <td>10/08/2023</td>
+      <td>Pádel</td>
+      <td>Activa</td>
+      <td>$ 18.500</td>
+      <td>Pagado</td>
+      <td>jperez@mail.com</td>
+      <td>3814990011</td>
+      <td></td>
+      <td>38.0</td>
+    </tr>
+    <tr>
+      <td>110</td>
+      <td>J. Perez</td>
+      <td>32555666</td>
+      <td>10/08/2023</td>
+      <td>Pádel</td>
+      <td>Activa</td>
+      <td>$ 18.500</td>
+      <td>Pagado</td>
+      <td>jperez@mail.com</td>
+      <td>3814990011</td>
+      <td>DUPLICADO: Mismo DNI</td>
+      <td>38.0</td>
+    </tr>
+    <tr>
+      <td>111</td>
+      <td>Mariana López</td>
+      <td>33666777</td>
+      <td>18/05/2022</td>
+      <td>Gimnasio</td>
+      <td>Inactivo</td>
+      <td>$ 18.500</td>
+      <td>Vencido</td>
+      <td>marian@mail.com</td>
+      <td>Sin dato</td>
+      <td>Socio dado de baja en 2023 pero figura en cuotas</td>
+      <td>53.0</td>
+    </tr>
+    <tr>
+      <td>112</td>
+      <td>Carlos Rodríguez</td>
+      <td>31777888</td>
+      <td>01/07/2024</td>
+      <td>Fútbol 5</td>
+      <td>Activa</td>
+      <td>$ 18.500</td>
+      <td>Pendiente</td>
+      <td>carlos.r@mail.com</td>
+      <td>3815112233</td>
+      <td></td>
+      <td>27.0</td>
+    </tr>
+    <tr>
+      <td>113</td>
+      <td>Sofia Martínez</td>
+      <td>42888999</td>
+      <td>15/07/2024</td>
+      <td>Pádel</td>
+      <td>Activo</td>
+      <td>$ 18.500</td>
+      <td>Pagado</td>
+      <td>sofi@mail.com</td>
+      <td>3815223344</td>
+      <td></td>
+      <td>27.0</td>
+    </tr>
+    <tr>
+      <td>114</td>
+      <td>Mateo Romero</td>
+      <td>43999000</td>
+      <td>01/08/2024</td>
+      <td>Básquet</td>
+      <td>Cadete</td>
+      <td>$ 12.000</td>
+      <td>Pagado</td>
+      <td>mateo@mail.com</td>
+      <td>3815334455</td>
+      <td></td>
+      <td>26.0</td>
+    </tr>
+    <tr>
+      <td>115</td>
+      <td>Elena Díaz</td>
+      <td>30000111</td>
+      <td>05/08/2024</td>
+      <td>Natación</td>
+      <td>Activa</td>
+      <td>$ 18.500</td>
+      <td>Pendiente</td>
+      <td>elena@mail.com</td>
+      <td>Sin dato</td>
+      <td></td>
+      <td>26.0</td>
+    </tr>
+    <tr>
+      <td>116</td>
+      <td>Nicolás Benítez</td>
+      <td>38111222</td>
+      <td>22/03/2024</td>
+      <td>Fútbol 5</td>
+      <td>Activo</td>
+      <td>$ 18.500</td>
+      <td>Pagado</td>
+      <td>nico@mail.com</td>
+      <td>3815556677</td>
+      <td></td>
+      <td>31.0</td>
+    </tr>
+    <tr>
+      <td>117</td>
+      <td>Paula Morales</td>
+      <td>39222333</td>
+      <td>18/04/2024</td>
+      <td>Pádel</td>
+      <td>Activa</td>
+      <td>$ 18.500</td>
+      <td>Pagado</td>
+      <td>paula@mail.com</td>
+      <td>3815667788</td>
+      <td></td>
+      <td>30.0</td>
+    </tr>
+    <tr>
+      <td>118</td>
+      <td>Lucas Ferreyra</td>
+      <td>40333444</td>
+      <td>10/01/2024</td>
+      <td>Tenis</td>
+      <td>Activa</td>
+      <td>$ 22.000</td>
+      <td>Pagado</td>
+      <td>lucas@mail.com</td>
+      <td>3815778899</td>
+      <td></td>
+      <td>33.0</td>
+    </tr>
+    <tr>
+      <td>119</td>
+      <td>Florencia Castro</td>
+      <td>41444555</td>
+      <td>30/09/2026</td>
+      <td>Gimnasio</td>
+      <td>Activo</td>
+      <td>$18.500</td>
+      <td>Pagado</td>
+      <td>flor@mail.com</td>
+      <td>3815889900</td>
+      <td>DUPLICADO: Mismo DNI</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <td>120</td>
+      <td>Gabriel Trevisan</td>
+      <td>28555666</td>
+      <td>01/03/2021</td>
+      <td>Pádel</td>
+      <td>Honorario</td>
+      <td>$0</td>
+      <td>Exento</td>
+      <td>g.trevisan@cerroalto.ar</td>
+      <td>3815990011</td>
+      <td>Profesor/Referente</td>
+      <td>67.0</td>
+    </tr>
+  </tbody>
+</table>
+    
+    <div class="footer">
+        Reporte generado con Python y Pandas | 25/10/2026
+    </div>
+</body>
+</html>
